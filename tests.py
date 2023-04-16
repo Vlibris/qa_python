@@ -93,7 +93,8 @@ class TestBooksCollector:
     def test_add_book_in_favorites_not_added_if_not_in_books_rating(self):
         collector = BooksCollector()
         collector.add_book_in_favorites('Книга отсутствует')
-        assert 'Книга отсутствует' not in collector.favorites
+        result = collector.get_list_of_favorites_books()
+        assert 'Книга отсутствует' not in result
 
 # Проверка удаления книги из избранного.
     def test_delete_book_from_favorites(self):
