@@ -46,14 +46,16 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.set_book_rating('Гордость и предубеждение и зомби', 0)
-        assert collector.books_rating['Гордость и предубеждение и зомби'] >= 1
+        rating = collector.get_book_rating('Гордость и предубеждение и зомби')
+        assert rating == 1
 
 # Нельзя выставить рейтинг больше 10.
     def test_cant_set_rating_greater_than_ten(self):
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.set_book_rating('Гордость и предубеждение и зомби', 11)
-        assert collector.books_rating['Гордость и предубеждение и зомби'] <= 10
+        rating = collector.get_book_rating('Гордость и предубеждение и зомби')
+        assert rating == 1
 
 # У не добавленной книги нет рейтинга.
     def test_set_book_rating_book_not_added_has_no_rating(self):
