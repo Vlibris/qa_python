@@ -82,8 +82,8 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_book_in_favorites('Гордость и предубеждение и зомби')
-        collector.add_book_in_favorites('Гордость и предубеждение и зомби')
-        assert 'Гордость и предубеждение и зомби' in collector.favorites
+        result = collector.get_list_of_favorites_books()
+        assert 'Гордость и предубеждение и зомби' in result
 
 
 # Нельзя добавить книгу в избранное, если её нет в словаре books_rating
@@ -98,7 +98,8 @@ class TestBooksCollector:
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_book_in_favorites('Гордость и предубеждение и зомби')
         collector.delete_book_from_favorites('Гордость и предубеждение и зомби')
-        assert 'Гордость и предубеждение и зомби' not in collector.favorites
+        result = collector.get_list_of_favorites_books()
+        assert 'Гордость и предубеждение и зомби' not in result
 
 # Проверка получения списка избранных книг
     def test_get_list_of_favorites_books(self):
