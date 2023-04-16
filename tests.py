@@ -28,7 +28,6 @@ class TestBooksCollector:
 # нельзя добавить одну книгу дважды
     def test_add_new_book_add_one_book_twice(self):
         collector = BooksCollector()
-
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Гордость и предубеждение и зомби')
 
@@ -43,18 +42,18 @@ class TestBooksCollector:
         assert rating is None
 
 # Нельзя выставить рейтинг меньше 1.
-        def test_cant_set_rating_less_than_one(self):
-            collector = BooksCollector()
-            collector.add_new_book('Гордость и предубеждение и зомби')
-            collector.set_book_rating('Гордость и предубеждение и зомби', 0)
-            assert collector.books_rating['Гордость и предубеждение и зомби'] >= 1
+    def test_cant_set_rating_less_than_one(self):
+        collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        collector.set_book_rating('Гордость и предубеждение и зомби', 0)
+        assert collector.books_rating['Гордость и предубеждение и зомби'] >= 1
 
 # Нельзя выставить рейтинг больше 10.
-        def test_cant_set_rating_greater_than_ten(self):
-            collector = BooksCollector()
-            collector.add_new_book('Гордость и предубеждение и зомби')
-            collector.set_book_rating('Гордость и предубеждение и зомби', 11)
-            assert collector.books_rating['Гордость и предубеждение и зомби'] <= 10
+    def test_cant_set_rating_greater_than_ten(self):
+        collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        collector.set_book_rating('Гордость и предубеждение и зомби', 11)
+        assert collector.books_rating['Гордость и предубеждение и зомби'] <= 10
 
 # У не добавленной книги нет рейтинга.
     def test_set_book_rating_book_not_added_has_no_rating(self):
@@ -69,7 +68,7 @@ class TestBooksCollector:
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Что делать , если ваш кот хочет вас убить')
         collector.add_new_book('Python')
-        collector.set_book_rating('Python' , 9)
+        collector.set_book_rating('Python', 9)
         result = collector.get_books_with_specific_rating(1)
         assert ['Гордость и предубеждение и зомби', 'Что делать , если ваш кот хочет вас убить'] == result
 
