@@ -36,6 +36,7 @@ class TestBooksCollector:
 # нельзя выставить рейтинг книге, которой нет в списке.
     def test_cant_set_rating_book_not_listed(self):
         collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение и зомби')
         collector.set_book_rating('Книги нет', 1)
         rating = collector.get_book_rating('Книги нет')
         assert rating is None
